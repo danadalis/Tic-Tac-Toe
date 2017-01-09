@@ -29,20 +29,20 @@ public class SmartAi extends Player{
         
         if(smartMarker == false){
             smartMarker = win(game, size);
-        }
-        
-        if(smartMarker == false){
-            smartMarker = blockWin(game, size);
-        }                
-        
-        if(smartMarker == false){
-            do{
-                row = random.nextInt(size) + 1;
-                col = random.nextInt(size) + 1;
+            
+            if(smartMarker == false){
+                smartMarker = blockWin(game, size);
+            
+                if(smartMarker == false){
+                    do{
+                        row = random.nextInt(size) + 1;
+                        col = random.nextInt(size) + 1;
 
-                xyFree = game.insertMarker(col, row, symbol);
-            }while(xyFree == false);
-        }
+                        xyFree = game.insertMarker(col, row, symbol);
+                    }while(xyFree == false);
+                }
+            }    
+        }          
         
         game.createBoard(size);
         winnerCheck = game.winner(symbol);
